@@ -3,7 +3,7 @@ function productName(shname) {
  var ss = SpreadsheetApp.getActiveSpreadsheet();  
  
   var sheet = ss.getSheetByName(shname);
-  SpreadsheetApp.getActiveSheet().getRange(2, 20, 10000, 1).clear({contentsOnly: true}); 
+  //SpreadsheetApp.getActiveSheet().getRange(2, 20, 10000, 1).clear({contentsOnly: true});  
   var data = sheet.getDataRange().getValues();
   var i=0;
    var r=1  ;
@@ -61,38 +61,28 @@ function productName(shname) {
 function change(shname) {
   
  var ss = SpreadsheetApp.getActiveSpreadsheet();  
- var sheet = ss.getSheetByName(shname);
- var data = sheet.getDataRange().getValues();
+ 
+  var sheet = ss.getSheetByName(shname);
+  //SpreadsheetApp.getActiveSheet().getRange(2, 20, 10000, 1).clear({contentsOnly: true});  
+  var data = sheet.getDataRange().getValues();
   var i=0;
    var r=1  ;
   for(i in data) 
   { 
     
     var row = data[i][2].toString();
-  if (row.indexOf("Immobiliare.it - partnership annunci_Rinnovo4") !=-1 )                 
-  {
-   sheet.getRange(r,1).setValue('LOCAL ADV');
-   sheet.getRange(r,2).setValue('Import');
-  }
-    
-  if (row.indexOf("Metriquadri Srl-vetrinavip") !=-1 )                 
-  {
-   sheet.getRange(r,1).setValue('LOCAL ADV');
-   sheet.getRange(r,2).setValue('Vetrina');
-  }
   
-  if (row.indexOf("catawiki-vetrina a cpc_Rinnovo1") !=-1 )                 
-  {
-   sheet.getRange(r,1).setValue('LOCAL ADV');
-   sheet.getRange(r,2).setValue('Vetrina');
-  }
     
-    if (row.indexOf("Top list personalizzata_Rinnovo2") !=-1 )                 
-  {
-   sheet.getRange(r,1).setValue('LOCAL ADV');
-   sheet.getRange(r,2).setValue('Crediti Top List');
-  } 
-    
+    //elenco
+     if (row.indexOf("Immobiliare.it - partnership annunci_Rinnovo4") !=-1 )            {sheet.getRange(r,1).setValue('LOCAL ADV'); sheet.getRange(r,2).setValue('Import'); }
+    if (row.indexOf("Metriquadri Srl-vetrinavip") !=-1 )                                {sheet.getRange(r,1).setValue('LOCAL ADV'); sheet.getRange(r,2).setValue('Vetrina'); }
+    if (row.indexOf("catawiki-vetrina a cpc_Rinnovo1") !=-1 )                           {sheet.getRange(r,1).setValue('LOCAL ADV'); sheet.getRange(r,2).setValue('Vetrina'); }
+    if (row.indexOf("Top list personalizzata_Rinnovo2") !=-1 )                          {sheet.getRange(r,1).setValue('LOCAL ADV'); sheet.getRange(r,2).setValue('Crediti'); }
+//    LOCAL ADV	Import	
+//    LOCAL ADV	Vetrina	Metriquadri Srl-vetrinavip
+//    LOCAL ADV	Vetrina	catawiki-vetrina a cpc_Rinnovo1
+//    LOCAL ADV	Crediti Top List	Top list personalizzata_Rinnovo2
+//    
     
     r=r+1;
   }
@@ -100,11 +90,13 @@ function change(shname) {
 
 
 
+
+
 function run_recoding()
 {
-    productName("Prodotti con opportunità v2 2017") 
-    productName("Prodotti con opportunità v2 2016") 
-    productName("Prodotti con opportunità v2 2017 cumul")
-    productName("Prodotti con opportunità v2 2016 cumul")
-    change("Prodotti con opportunità v2 2017 cumul")
+  productName("Prodotti con opportunità v2 2017") 
+  productName("Prodotti con opportunità v2 2016") 
+  productName("Prodotti con opportunità v2 2017 cumul")
+  productName("Prodotti con opportunità v2 2016 cumul")
+  change("Prodotti con opportunità v2 2017 cumul")
 }
